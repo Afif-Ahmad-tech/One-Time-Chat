@@ -1,0 +1,22 @@
+{
+  "name": "one-time-chat-room",
+  "version": "1.0.0",
+  "description": "A temporary WhatsApp-style chat room app with in-memory messages and creator-controlled room ending.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "temporary-chat",
+    "socket.io",
+    "express",
+    "whatsapp-style",
+    "ephemeral"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5"
+  }
+}

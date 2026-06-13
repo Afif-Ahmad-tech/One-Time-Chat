@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>One Time Chat</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="home" id="homeView">
+        <div class="home__copy">
+          <p class="eyebrow">temporary private rooms</p>
+          <h1>One Time Chat</h1>
+          <p class="lead">Create a room, share the invite link, text like a familiar chat app, send pictures, then end the room to wipe the conversation.</p>
+        </div>
+
+        <form class="create-panel" id="createRoomForm">
+          <label>
+            Room name
+            <input id="roomTitle" maxlength="60" value="Private Chat" />
+          </label>
+          <label>
+            Your display name
+            <input id="creatorName" maxlength="32" value="Creator" />
+          </label>
+          <button type="submit">Create chat room</button>
+          <p class="fine-print">Messages and pictures are kept only while the room is active on this server.</p>
+        </form>
+      </section>
+
+      <section class="chat-shell hidden" id="chatView" aria-label="Chat room">
+        <header class="chat-header">
+          <div>
+            <p class="eyebrow" id="roomStatus">live room</p>
+            <h1 id="chatTitle">One Time Chat</h1>
+          </div>
+          <div class="header-actions">
+            <button class="ghost" type="button" id="copyInviteBtn">Copy link</button>
+            <button class="danger hidden" type="button" id="endRoomBtn">End chat</button>
+          </div>
+        </header>
+
+        <div class="people" id="peopleList"></div>
+        <div class="messages" id="messages"></div>
+
+        <form class="composer" id="messageForm">
+          <label class="attach" title="Attach picture">
+            <input id="imageInput" type="file" accept="image/png,image/jpeg,image/gif,image/webp" />
+            <span>+</span>
+          </label>
+          <div class="compose-box">
+            <div class="image-preview hidden" id="imagePreview">
+              <img alt="" id="previewImg" />
+              <button type="button" id="removeImageBtn">Remove</button>
+            </div>
+            <textarea id="messageInput" rows="1" maxlength="1200" placeholder="Type a message"></textarea>
+          </div>
+          <button class="send" type="submit">Send</button>
+        </form>
+      </section>
+
+      <section class="ended hidden" id="endedView">
+        <h1>Chat Ended</h1>
+        <p>This room was closed by its creator. The chat history is gone.</p>
+        <a href="/">Create a new room</a>
+      </section>
+
+      <dialog id="joinDialog">
+        <form method="dialog" id="joinForm">
+          <h2>Join Chat</h2>
+          <label>
+            Your display name
+            <input id="joinName" maxlength="32" value="Guest" />
+          </label>
+          <button type="submit">Join room</button>
+        </form>
+      </dialog>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/script.js"></script>
+  </body>
+</html>
